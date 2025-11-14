@@ -1,0 +1,206 @@
+/* CSS Custom Properties dla systemu motywów */
+:root {
+  /* Dark theme (domyślny) */
+  --color-primary: #646cff;
+  --color-primary-hover: #535bf2;
+  --color-bg: #242424;
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-surface: #1a1a1a;
+  --color-border: #333;
+  --color-button-bg: #1a1a1a;
+  --color-button-border: transparent;
+  --color-docs: #888;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  
+  /* Typography */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  
+  /* Border radius */
+  --border-radius-sm: 0.25rem;
+  --border-radius: 0.5rem;
+  --border-radius-lg: 0.75rem;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  /* Max widths */
+  --max-width: 1200px;
+}
+
+/* Light theme via media query */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --color-primary-hover: #747bff;
+    --color-text: #213547;
+    --color-bg: #ffffff;
+    --color-surface: #f9f9f9;
+    --color-border: #d1d5db;
+    --color-button-bg: #f9f9f9;
+    --color-button-border: #646cff;
+    --color-docs: #6b7280;
+  }
+}
+
+/* Light theme via data attribute */
+:root[data-theme="light"] {
+  --color-primary-hover: #747bff;
+  --color-text: #213547;
+  --color-bg: #ffffff;
+  --color-surface: #f9f9f9;
+  --color-border: #d1d5db;
+  --color-button-bg: #f9f9f9;
+  --color-button-border: #646cff;
+  --color-docs: #6b7280;
+}
+
+/* Dark theme via data attribute */
+:root[data-theme="dark"] {
+  --color-primary-hover: #535bf2;
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-bg: #242424;
+  --color-surface: #1a1a1a;
+  --color-border: #333;
+  --color-button-bg: #1a1a1a;
+  --color-button-border: transparent;
+  --color-docs: #888;
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Uniwersalne klasy */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-lg);
+}
+
+.container-padded {
+  padding: var(--spacing-2xl);
+}
+
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+}
+
+.grid-auto-fit {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-columns-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  background-color: var(--color-surface);
+}
+
+.card-padded {
+  padding: var(--spacing-2xl);
+}
+
+.heading {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text);
+}
+
+.subheading {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+.interactive {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.interactive:hover {
+  transform: scale(1.05);
+}
+
+.button {
+  background-color: var(--color-button-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-button-border);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  border-color: var(--color-primary);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-primary {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.button-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .grid-columns-2 {
+    grid-template-columns: 1fr;
+  }
+}
